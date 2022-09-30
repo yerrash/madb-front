@@ -35,7 +35,7 @@ const Cadastro = () => {
   const { handleSignUpAuth, token } = useAuthenticationProvider();
 
   const signUpSchema = yup.object().shape({
-    name: yup
+    first_name: yup
       .string()
       .required("Campo obrigatório")
       .matches(/^[A-zÀ-ú]*([A-z-À-ú ]*[A-z-À-ú])$/, "Use apenas letras"),
@@ -143,7 +143,7 @@ const Cadastro = () => {
                   flexDir={"column"}
                   alignItems={"center"}
                   mt={2}
-                  isInvalid={errors.name}
+                  isInvalid={errors.first_name}
                 >
                   <FormLabel textAlign={"center"} fontWeight={"bold"}>
                     Nome
@@ -152,7 +152,7 @@ const Cadastro = () => {
                       <Input
                         textAlign={"center"}
                         variant={"unstyled"}
-                        {...register("name")}
+                        {...register("first_name")}
                         type="text"
                         borderBottom={
                           errors.name
@@ -160,7 +160,9 @@ const Cadastro = () => {
                             : "4px solid #ff9f1a"
                         }
                         borderRadius={"none"}
-                        placeholder={errors.name ? errors.name.message : ""}
+                        placeholder={
+                          errors.first_name ? errors.first_name.message : ""
+                        }
                         _placeholder={{ color: "#FF530D" }}
                         py={2}
                       />
@@ -169,7 +171,7 @@ const Cadastro = () => {
                         <PopoverArrow />
                         <PopoverCloseButton />
                         <PopoverBody mt={4}>
-                          {errors.name
+                          {errors.first_name
                             ? errors.name.message
                             : "Este campo deve conter apenas letras"}
                         </PopoverBody>

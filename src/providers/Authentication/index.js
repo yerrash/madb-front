@@ -10,8 +10,9 @@ export const AuthenticationProvider = ({ children }) => {
 
   const handleSignUpAuth = async (data, history, toast) => {
     await api
-      .post("/users", data)
+      .post("/users/", data)
       .then((res) => {
+        console.log(data);
         toast({
           title: "Usuário cadastrado com sucesso!",
           status: "success",
